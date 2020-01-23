@@ -7,7 +7,7 @@ before_install:
   -in deploy_key.enc -out deploy_key -d
 - docker build -t $DOCKER_HUB_USERNAME/docker-react:production -f Dockerfile.dev .
 script:
-- docker run -e CI=true pavelsab/docker-react npm run test -- --coverage
+- docker run -e CI=true pavelsab/docker-react:production npm run test -- --coverage
 - docker push $DOCKER_HUB_USERNAME/docker-react:production
 deploy:
   provider: script
